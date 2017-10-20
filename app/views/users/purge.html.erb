@@ -1,0 +1,52 @@
+<% provide(:title, 'Purge Customers') %>
+<h2><b>
+<% if @cuisine.nil? %>
+	All customers
+<% else %>
+	All <%= @cuisine %> Customers
+<% end %>
+</b></h2>
+
+<div class="container">
+	<div class="row">
+		<div class="container">
+			<table class="table table-condensed table-striped table-bordered">
+				<caption>Number of customers <%= "(#{@users.count})" %></caption>
+				<thead>
+					<tr class="thistable">
+						<th class="col-xs-3">Name</th>
+						<th class="col-xs-1">Customer ID</th>
+						<th class="col-xs-2">Cuisine</th>
+						<th class="col-xs-5">Last Order</th>
+						<th class="col-xs-1">Purge?</th>
+					</tr>
+				</thead>
+				
+				
+				<% @users.each do |user| %>
+					<tr class="thistable">
+						<td><%= link_to user.name, user %></td>
+						<td><%= link_to user.customerid, user %></td>
+						<% cuisine = get_inventory(user.cuisine) %>
+						<% if cuisine.nil? %>
+							<td><b><%= user.cuisine %></b></td>
+						<% else %>
+							<td><%= link_to user.cuisine, edit_order_path(cuisine) %></td>
+						<% end %>
+						<% a = user.orders.first %>
+						<% if !a.nil? %>
+							<td><%= link_to big_time_string(user.orders.first.created_at), pick_order_path(user.orders.first) %></td>
+						<% else %>
+							<td>No orders</td>
+						<% end %>
+						<td>
+						<% if current_user.admin? && !user.admin? %>
+							<%= link_to "Remove customer", user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-primary" %>							
+						<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

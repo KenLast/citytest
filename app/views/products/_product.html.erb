@@ -1,0 +1,13 @@
+<tr>
+	<% if current_user.admin? %>
+		<td><%= product.productid.to_s %></td>
+	<% end %>
+	<td><%= product.quantity %></td>
+  <td><%= product.selum %></td>
+	<td><%= product.name %></td>
+	<% if current_user.admin? %>
+		<td><%= product.um %></td>
+		<td><%= product.qum %></td>
+		<td><%= product.qpu %></td>
+	<% end %>
+</tr>

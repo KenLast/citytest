@@ -1,0 +1,42 @@
+<% provide(:title, 'Upload new inventory') %>
+<% provide(:use_path, inventory_path) %>
+
+<h2><b>Upload new inventory template</b></h2>
+
+<div class="container">
+	<%= form_tag({action: :create}, multipart: true) do %>
+		<div class="caption">
+				Upload .csv file containing available products
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-1">
+				<%= label_tag 'Template' %>
+			</div>
+			<div class="col-xs-3">
+				<% if @name.nil? %>
+					<%= collection_select :template, :cuisine, Cuisine.all, :name, :name, :include_blank => false %>
+				<% else %>
+					<%= collection_select :template, :cuisine, [@name], :to_s, :to_s, :include_blank => false %>
+				<% end %>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<%= file_field_tag :csvfile, accept: '.csv' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<%= submit_tag ("Load") %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<!  for some reason, need exactly 4 line breaks to make footer work correctly ->
+
+<br>
+<br>
+<br>
+<br>

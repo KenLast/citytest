@@ -1,0 +1,20 @@
+<div class="container">
+	<table class="table table-condensed table-striped table-bordered">
+		<caption>Products: <%= "(#{@order.products.size})" %></caption>
+		<thead>
+			<tr class="thistable">
+				<th class="col-xs-1">Quantity</th>
+				<th class="col-xs-1">Units</th>
+				<th class="col-xs-10">Product Description</th>
+			</tr>
+		</thead>
+		
+		<% @products.each do |p| %>
+				<tr class="thistable">
+					<td><%= p.quantity.to_s %></td>
+					<td><%= p.selum.pluralize(p.quantity) %></td>
+					<td><%= p.name %></td>
+				</tr>
+		<% end %>
+	</table>
+</div>

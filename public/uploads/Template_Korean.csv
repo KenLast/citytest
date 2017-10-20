@@ -1,0 +1,8 @@
+ProdID,Discontinued,ProductID,ProductName,SupplierID,SupplierID2,CategoryID,UM,QuantityPerUnit,QUM,ChargeConvertInd,ReorderLevel,ReorderInd,ReOrderDate,Qty_OnHand,Qty_Commit,Qty_OnOrder,Transport_Time,TaxableItem,EffBegDte,EffEndDte,UPC,PPic,uc,uc_date,updated,created,Notes
+64,FALSE,10138,Korean Cucumber (lrg. Box),CHOFAR,KORFAR,SVSU,LB,CS,40,,0,P,,0,10,0,0,0,1/1/1990,,,,$0.70 ,6/29/2002,11/23/1999,11/23/1999
+68,FALSE,10143,Korean Cucumber,CHOFAR,MOUVIL,AV,LB,CS,40,,0,P,11/2/2015,3275,100,-2880,0,0,1/1/1990,,,,$0.80 ,10/6/2003,8/29/2003,11/23/1999
+708,FALSE,40174,Korean Pear,CHOFAR,,AF,LB,CS,11,CS,0,P,4/11/2011,96,12,122,0,0,1/1/1990,,,,$1.32 ,12/2/2003,12/4/2003,9/25/2000
+713,FALSE,40177,Korean Pear,CHOFAR,,SFF,LB,CS,11,,0,P,5/13/2005,-113,2,0,0,0,1/1/1990,,,,,,12/4/2012,10/2/2000
+881,FALSE,10151,Red Korean Chili,FSI,,AV,LB,LB,1,,0,P,2/27/2012,3,-23,77,0,0,1/1/1990,,,,$6.00 ,9/15/2003,4/15/2011,5/16/2003
+1018,FALSE,10216,Korean Green Chili Pepper,FSI,,P,LB,CS,10,,0,P,11/1/2016,1327,-396,-570,0,0,1/1/1990,,,,$3.50 ,3/26/2014,7/6/2012,8/2/2005
+1234,FALSE,10217,Red Korean Chili Pepper,FSI,,AV,LB,CS,5,,0,P,,-5,0,0,0,0,1/1/1990,,,,$0.00 ,,9/12/2015,9/12/2015

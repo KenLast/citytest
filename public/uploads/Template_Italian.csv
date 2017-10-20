@@ -1,0 +1,5 @@
+ProdID,Discontinued,ProductID,ProductName,SupplierID,SupplierID2,CategoryID,UM,QuantityPerUnit,QUM,ChargeConvertInd,ReorderLevel,ReorderInd,ReOrderDate,Qty_OnHand,Qty_Commit,Qty_OnOrder,Transport_Time,TaxableItem,EffBegDte,EffEndDte,UPC,PPic,uc,uc_date,updated,created,Notes
+90,FALSE,10172,Italian Eggplant,PACRIM,COABRO,SV,LB,CS,20,,0,P,4/6/2015,97,23,63,0,0,1/1/1990,,,,,,4/15/2011,11/23/1999
+419,FALSE,50105,Basil - Italian,HUAPRO,CHAPRO,H,LB,LB,1,,0,P,11/3/2016,389,-231,-111,0,0,1/1/1990,,,,$5.30 ,12/15/2003,10/29/2015,11/24/1999
+427,FALSE,50130,Parsley - Italian,FCBLOX,BROGAR,H,BU,CS,30,,0,P,11/5/2016,3820,-840,-263,0,0,1/1/1990,,,,$0.47 ,4/5/2013,4/15/2011,11/24/1999
+547,FALSE,90165,Chestnut - Italian,FCBLOX,,SVF,LB,SX,25,,0,P,12/7/2012,76,22,4,0,0,1/1/1990,,,,$2.35 ,11/19/2003,4/15/2011,11/24/1999

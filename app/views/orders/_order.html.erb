@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="container">
+		<table class="table table-condensed table-striped table-bordered">
+			<caption>Number of orders <%= "(#{@orders.count})" %></caption>
+			<thead>
+				<tr class="thistable">
+					<% if current_user.admin && (current_user.id != order.user.id) %>
+						<th class="col-xs-3">Customer</th>
+						<th class="col-xs-1">Order #</th>
+					<% end %>
+					<th class="col-xs-3">Order Name</th>
+					<th class="col-xs-4">Date</th>
+				</tr>
+			</thead>
+			
+			
+			<% @orders.each do |o| %>
+				<tr class="thistable">
+					<% if current_user.admin && (current_user.id != order.user.id) %>
+						<td><%= o.get_customer.name %></td>
+						<td align='right'>
+							<div style="padding-right: 20px;">
+								<%= o.id.to_s %>
+							<div>
+						</td>
+					<% end %>
+					<td><%= link_to o.name, edit_order_path(o) %></td>
+					<td><%= link_to o.created_at, edit_order_path(o) %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<% provide(:title, "Edit Order") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+			Edit Order 
+			<% if current_user.admin %>
+				<%= @order.id %>
+			<% end %>
+			for <%= @user.name %>
+			<span class="timestamp">
+			Placed <%= time_ago_in_words(@order.created_at) %> ago.
+			</span>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<!--  list all product on order here -->
+
+
+<div>
+	<h2>
+	Note: <%= @order.note %>
+	</h2>
+</div>
+
+<div>
+	<% if (@user.id == current_user.id) then %>
+		<%= link_to "Re-order", edit_order_path(@order), class: "btn btn-lg btn-primary" %>
+	<% end %>
+</div>

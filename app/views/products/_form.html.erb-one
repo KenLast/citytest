@@ -1,0 +1,15 @@
+<%= form_for(@product, url: yield(:use_path)) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<!-- need to add products here -->
+ 	<% if current_user.admin? %>
+		<%= f.label :name, "Item number" %>
+		<%= f.number_field :item, min: 0, step: 1, class: 'form-control' %>
+	<% end %>
+	<%= f.label :name, "Quantity" %>
+	<%= f.number_field :quantity, min: 0, step: 1, class: 'form-control' %>
+	<%= f.label :name, "Product description" %>
+	<%= f.text_field :description, class: 'form-control' %>
+	
+	<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

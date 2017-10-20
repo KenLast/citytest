@@ -1,0 +1,57 @@
+<% provide(:title, "Show Order #{@order.id}") %>
+<div class="row">
+  <div class="col-xs-12">
+    <section class="user_info">
+			<% if @order.name? %>
+				Order name: <b><%= @order.name %></b><br>
+			<% end %>
+			
+			Customer: <b><%= link_to @order.get_customer.name, user_path(@order.get_customer) %></b><br>
+			Cuisine: <b><%= @order.cuisine %></b><br>
+			Created <%= @order.created_at.to_formatted_s(:long_ordinal) %> ... 
+      <%= time_ago_in_words(@order.created_at) %> ago<br>
+			<% if current_user.admin? %>
+				<% if @order.get_downloaded.nil? %>
+					Not yet downloaded<br>
+				<% else %>
+					Downloaded <%= @order.get_downloaded.to_formatted_s(:long_ordinal) %> ...
+					<%= time_ago_string(@order.get_downloaded) %> <%= link_to "Reset download", orders_download_reset_path(@order), class: "btn btn-sm btn-primary" %> <br>
+				<% end %>
+				Database order sequence number <%= @order.id %><br>
+			<% end %>
+			
+    </section>
+  </div>
+</div>
+
+
+<div class="row">
+	<!  Order's products listed here as table ->
+	<% if @order.lineitems.any? %>
+		<% @lineitems = @order.lineitems.all.sort %>
+		<%= render 'shared/order_lineitems' %>
+	<% end %>
+</div>
+
+<br>
+<div class="row">
+	<div class="col-xs-12">
+		Notes:<br>
+		<% rows = calculate_rows(@order.note) %> 
+		<textarea disabled rows="<%= "#{rows}" %>"><%= @order.note %></textarea>
+	</div>
+</div>
+
+
+<div class="row">
+	<% if (@user.id == current_user.id) || current_user.admin? then %>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+				<%= link_to "Re-order", edit_order_path(@order), class: "btn btn-md btn-primary" %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
+

@@ -1,0 +1,15 @@
+<% provide(:title, "#{@cuisine_history} Inventory History" ) %>
+<% provide(:showusers, 'no') %>
+<% provide(:history, 'yes') %>
+
+<h2><b><%= "#{@cuisine_history}" %> inventory template history</b></h2>
+
+<div class="row">
+  <div class="col-xs-12">
+    <% if @user.orders.any? %>
+      <ol class="orders">
+        <%= render '/orders/all_orders' %>
+      </ol>
+    <% end %>
+  </div>
+</div>

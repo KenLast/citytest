@@ -1,0 +1,37 @@
+<% provide(:title, 'Edit Order') %>
+<% provide(:button_text, 'Place New Order') %>
+<% provide(:use_path, order_path) %>
+<% provide(:nametext, @order.name) %>
+<% if @order.note.blank? %>
+	<% provide(:ordertext, 'Add any notes here') %>
+<% else %>
+	<% provide(:ordertext, @order.note) %>
+<% end %>
+<% provide(:usemethod, 'PATCH') %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <section class="user_info">
+			<h2><b>View previous order</b></h2>
+			Name: <b><%= @user.name %></b><br>
+			<% if @order.name %>
+				Based on <b><%= @order.name %></b>
+			<% end %>
+			<% if !@orderdate.nil? %>
+				<br>
+				Created <b><%= @orderdate.to_formatted_s(:long_ordinal) %></b> ... 
+	      <b><%= time_ago_in_words(@orderdate) %> ago </b>
+			<% end %>
+			<% if current_user.admin? %>
+				<br>
+				Customer: <%= link_to @user.name, user_path(@user)%>
+				<br>
+				Cuisine: <b><%= @order.cuisine %></b>
+			<% end %>
+		</section>
+	</div>
+</div>
+	<br>
+<div class="row">
+	<%= render 'form' %>
+</div>

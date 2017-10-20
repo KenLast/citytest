@@ -1,0 +1,77 @@
+<style type="text/css">
+textarea {
+ font-size: 1em;
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ border: 1px solid black;
+}
+
+input, textarea, select, .uneditable-input {
+margin-bottom: 0;
+margin-top: 0;
+}
+
+#thistable {
+padding-bottom: 0px;
+}
+
+</style>
+
+
+<div class="container">
+	<%= form_for(@order, url: yield(:use_path), method: yield(:usemethod), html: { class: "form-inline" }) do |f| %>
+		<div class="row">
+			<div class="col-xs-1">
+				Identifier:
+			</div>
+			<div class="col-xs-11">
+				<%= f.text_field :name, placeholder: yield(:nametext) %>
+			</div>
+		</div>
+		<%= f.hidden_field :user_id, value: @order.user_id %>
+		<%= f.hidden_field :cuisine, value: @user.cuisine %>
+		<table class="table table-condensed table-bordered table-striped">
+			<caption>Available Products: <%= "(#{@order.lineitems.size})" %></caption>
+			<thead>
+				<tr>
+					<th class="col-xs-1" id="thistable">Quantity</th>
+					<th class="col-xs-1" id="thistable">Units</th>
+					<% if current_user.admin? %>
+						<th class="col-xs-1" id="thistable">Prod ID</th>
+						<th class="col-xs-9" id="thistable">Product Description</th>
+					<% else %>
+						<th class="col-xs-10" id="thistable">Product Description</th>
+					<% end %>
+				</tr>
+			</thead>
+			<%= f.fields_for :lineitems do |l| %>
+				<div class="form-group">
+					<%= l.hidden_field :product_id %>
+					<% p = l.object.get_product %>
+					<tr>
+						<td id="thistable"><%= l.number_field :quantity, min: 0, step: 1 %></td>
+						<td id="thistable">
+						   <% if no_quantity_type(p) %>
+                 <%= l.collection_select :selum, [p.um], :to_s, :to_s %>
+               <% else %>
+                 <%= l.collection_select :selum, [p.um, p.qum], :to_s, :to_s %>
+               <% end %>
+						</td>
+						<% if current_user.admin? %>
+							<td id="thistable"><%= p.productid %></td>
+						<% end %>
+						<td id="thistable"><%= p.name %></td>
+					</tr>
+				</div>
+			<% end %>
+		</table>
+		
+		<! add place for notes and title ->
+		<div class="row">
+			<div class="col-xs-12">
+			<b>Notes:</b> <%= f.text_area :note, placeholder: yield(:ordertext) %>
+			</div>
+		</div>
+		
+		<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+	<% end %>
+</div>

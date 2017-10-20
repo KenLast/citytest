@@ -1,0 +1,5 @@
+class AddIndexToUsersCustomerid < ActiveRecord::Migration[5.0]
+  def change
+		add_index :users, :customerid, unique : true
+  end
+end

@@ -1,0 +1,50 @@
+<% provide(:title, "Show Order") %>
+<div class="row">
+  <div class="col-xs-12">
+    <section class="user_info">
+			<% if @order.name? %>
+				<b><%= @order.name %></b><br>
+			<% end %>
+			<% if (current_user.customerid != @user.customerid) %>
+				Order for <%= link_to @user.name, user_path(@user) %><br>
+				Cuisine: <b><%= @order.cuisine %></b><br>
+			<% end %>
+			<% if current_user.admin %>
+				Database order sequence number <%= @order.id %><br>
+			<% end %>
+			Placed <%= @order.created_at.to_formatted_s(:long_ordinal) %> ... 
+      <%= time_ago_in_words(@order.created_at) %> ago
+    </section>
+  </div>
+</div>
+
+<div class="row">
+	<!  Order's products listed here as table ->
+	<% if @order.lineitems.any? %>
+		<% @lineitems = @order.lineitems.all.sort %>
+		<%= render 'shared/order_lineitems' %>
+	<% end %>
+	</div>
+	<! show notes ->
+	<div class="row">
+		<div class="col-xs-12">
+			Notes:<br>
+			<textarea disabled><%= @order.note %></textarea>
+		</div>
+</div>
+<br>
+
+<div>
+	<% if (@user.id == current_user.id) || current_user.admin? then %>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+				<%= link_to "Exact Re-order", @order, method: "patch", class: "btn btn-lg btn-primary" %>
+			</div>
+			<div class="col-xs-4">
+				<%= link_to "Modified Re-order", edit_order_path(@order), class: "btn btn-lg btn-primary" %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>

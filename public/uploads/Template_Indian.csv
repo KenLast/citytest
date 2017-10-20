@@ -1,0 +1,7 @@
+ProdID,Discontinued,ProductID,ProductName,SupplierID,SupplierID2,CategoryID,UM,QuantityPerUnit,QUM,ChargeConvertInd,ReorderLevel,ReorderInd,ReOrderDate,Qty_OnHand,Qty_Commit,Qty_OnOrder,Transport_Time,TaxableItem,EffBegDte,EffEndDte,UPC,PPic,uc,uc_date,updated,created,Notes
+ProdID,Discontinued,ProductID,ProductName,SupplierID,SupplierID2,CategoryID,UM,QuantityPerUnit,QUM,ChargeConvertInd,ReorderLevel,ReorderInd,ReOrderDate,Qty_OnHand,Qty_Commit,Qty_OnOrder,Transport_Time,TaxableItem,EffBegDte,EffEndDte,UPC,PPic,uc,uc_date,updated,created,Notes
+160,FALSE,20166,Indian Corn,CHAPRO,ROSELL,SVF,EA,CS,24,,0,P,11/20/2015,21,29,0,0,0,1/1/1990,,,,,,11/23/1999,11/23/1999
+908,FALSE,40103,Avocado 24 Ct Index,FCBLOX,,F,EA,CS,24,,0,P,11/5/2008,-23046,-27960,-3184,0,0,1/1/1990,,,,$1.17 ,7/21/2008,4/15/2011,9/16/2003
+1081,FALSE,10104,Indian Bittermelon,ASIDIS,,AV,LB,CS,40,,0,P,7/26/2014,155,3,0,0,0,1/1/1990,,,,$0.00 ,,10/1/2007,10/1/2007
+1226,FALSE,10106,Indian Eggplant,FSI,,AV,LB,CS,30,,0,P,9/20/2016,274,0,480,0,0,1/1/1990,,,,$0.00 ,,6/2/2015,6/2/2015
+1230,FALSE,55119,Baby Peeled Carrot ( Individual ),CHAPRO,,PR,CS,CS,200,,0,P,10/18/2016,796,0,200,0,0,1/1/1990,,,,$0.00 ,,7/27/2015,7/27/2015

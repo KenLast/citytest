@@ -1,0 +1,28 @@
+<% provide(:title, 'New Order') %>
+<% provide(:button_text, 'Place Order') %>
+<% provide(:use_path, orders_path) %>
+<% provide(:nametext, '(Optional) Name this order') %>
+<% provide(:ordertext, 'Add any notes here') %>
+<% provide(:usemethod, 'POST') %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <section class="user_info">
+			<h2><b>Create new order</b></h2>
+
+			Customer: <%= link_to @user.name, user_path(@user) %>
+			<br>
+			<% if current_user.admin? %>
+				Cuisine: <b><%= @user.cuisine %></b>
+			<% end %>
+		</section>
+	</div>
+</div>
+<br>
+
+<!- will pass user.id to controller through form as a hidden field ->
+<% @order.user_id = @user.id %>
+
+<div class="row">
+	<%= render 'form' %>
+</div>

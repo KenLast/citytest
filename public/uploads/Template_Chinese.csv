@@ -1,0 +1,10 @@
+ProdID,Discontinued,ProductID,ProductName,SupplierID,SupplierID2,CategoryID,UM,QuantityPerUnit,QUM,ChargeConvertInd,ReorderLevel,ReorderInd,ReOrderDate,Qty_OnHand,Qty_Commit,Qty_OnOrder,Transport_Time,TaxableItem,EffBegDte,EffEndDte,UPC,PPic,uc,uc_date,updated,created,Notes
+50,FALSE,10115,Chinese Okra (singqua),FSI,PACRIM,AV,LB,LB,1,,0,P,11/3/2016,-440,-143,545,0,0,1/1/1990,,,,$1.25 ,11/21/2014,10/8/2016,11/23/1999,
+88,FALSE,10170,Chinese Eggplant,FSI,PACRIM,AV,LB,CS,30,,0,P,11/5/2016,-549003,7763,385604,0,0,1/1/1990,,,,$0.43 ,9/14/2016,3/5/2013,11/23/1999
+153,FALSE,20159,Chinese Celery,ASIDIS,FSI,AV,LB,LB,1,,0,P,11/3/2016,-2589,-318,334,0,0,1/1/1990,,,,$1.25 ,3/25/2016,4/15/2011,11/23/1999
+405,FALSE,45133,Orange - Chinese,FCBLOX,ASIDIS,CF,LB,CS,38,,0,P,,-43,-33,152,0,0,1/1/1990,,,,,,11/15/1999,11/24/1999
+696,FALSE,90101,Noh Chinese Roast Chicken Mix,SEASIA,,N,EA,CS,24,,0,P,,0,15,0,0,0,1/1/1990,,,,$0.54 ,8/4/2000,8/4/2000,8/4/2000
+746,FALSE,10194,Chinese Celery,ASIDIS,FSI,AV,LB,LB,1,,0,P,4/11/2014,-69,-4,54,0,0,1/1/1990,,,,$3.75 ,1/25/2003,4/15/2011,3/19/2001
+854,FALSE,10203,Sato Imo - Chinese,FSI,,AV,LB,CS,44,,0,P,,0,3,0,0,0,1/1/1990,,,,$0.80 ,12/31/2002,12/30/2002,12/30/2002
+933,FALSE,20203,Ginger - China,COABRO,,PO,LB,CS,30,,0,P,10/31/2016,-12787,-8800,-5218,0,0,1/1/1990,,,,$1.18 ,10/14/2013,4/15/2011,2/23/2004
+987,FALSE,90709,Chinese Fine Cut Plain Noodle,TSUCHO,,N,CS,CS,1,,0,P,,0,0,0,0,0,1/1/1990,,,,$0.00 ,,1/5/2005,1/5/2005

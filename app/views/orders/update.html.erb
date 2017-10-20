@@ -1,0 +1,13 @@
+<% provide(:title, 'Update Order') %>
+<% provide(:button_text, 'Update Order') %>
+<% provide(:use_path, orders_path) %>
+<% provide(:nametext, @order.name) %>
+<% provide(:ordertext, @order.note) %>
+
+<h1>Update order</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+		<%= render 'form' %>
+  </div>
+</div>

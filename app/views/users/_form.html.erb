@@ -1,0 +1,89 @@
+<style>
+
+#thisfield {
+padding-bottom: 0px;
+height: 31px;
+}
+
+
+input, textarea, select, .uneditable-input {
+padding-bottom: 0px;
+height: 31px;
+}
+
+</style>
+
+<%= form_for(@user, url: yield(:use_path)) do |f| %>
+	<%= render 'shared/error_messages', object:f.object %>
+
+	<% if current_user.admin? %>
+		<div class="row">
+			<div class="col-xs-12">
+
+				<%= f.label :name %>
+				<%= f.text_field :name, class: 'form-control' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<%= f.label :customerid, "Customer ID" %>
+				<%= f.text_field :customerid, class: 'form-control' %>
+			</div>
+
+			<div class="col-xs-8" id="thisfield">
+				<%= f.label :cuisine %>
+				<%= f.collection_select :cuisine, Cuisine.all, :name, :name, 
+											:include_blank => false %>
+			</div>
+		</div>
+	<% else %>
+		<div class="row">
+			<div class="col-xs-12">
+				Name: <b><%= @user.name %></b><br>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				Customer ID: <b><%= @user.customerid %></b><br><br>
+			</div>
+		</div>
+
+	<% end %>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<%= f.label :email %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<%= f.email_field :email, class: 'form-control' %>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-xs-12">
+			<%= f.label :password %>
+			<%= f.password_field :password, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.password_field :password_confirmation, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-6">
+			<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+		</div>
+		<div class="col-xs-6">
+			<%= link_to "No changes", current_user, class: "btn btn-primary"%>
+		</div>
+	</div>
+
+<% end %>

@@ -1,0 +1,10 @@
+<%= form_tag({action: :retrieve}, multipart: true) do %>
+	<div class="row">
+		<div class="col-xs-3">
+			Download orders into .txt file
+		</div>
+		<div class="col-xs-2">
+			<%= submit_tag ("Download") %>
+		</div>
+	</div>
+<% end %>

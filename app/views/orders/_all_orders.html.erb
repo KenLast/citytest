@@ -1,0 +1,102 @@
+<! remove any inventory orders from count ->
+<% invent = 0 %>
+<% @orders.each do |o| %>
+	<% if is_inventory(o) %>
+		<% invent = invent + 1 %>
+	<% end %>
+<% end %>
+
+<! note that this partial is shared by many views.  history and showusers variables are used to change the way this looks ->
+<! history set to yes if this is called from cuisine history by admin console ->
+<! showusers set to yes if this is called from show orders by admin console ->
+ 
+<div class="row">
+	<div class="container">
+		<table class="table table-condensed table-striped table-bordered">
+			<caption><b>Order History <%= "(#{@orders.count - invent})" %></b></caption>
+			<thead>
+				<tr class="thistable">
+					<% if current_user.admin %>
+						<% history = yield(:history) %>
+						<% showusers = yield(:showusers) %>
+						<% if showusers == 'yes' %>
+							<th class="col-xs-3">Customer</th>
+							<th class="col-xs-1">Cuisine</th>
+						<% end %>
+						<th class="col-xs-1">
+							<div class="center">
+								Order #
+							</div>
+						</th>
+						<% if history == 'yes' %>
+							<th class="col-xs-6">Order Name</th>
+							<th class="col-xs-5">Date</th>
+						<% else %>
+							<th class="col-xs-3">Order Name</th>
+							<th class="col-xs-2">Date</th>
+							<th class="col-xs-2">Downloaded</th>
+						<% end %>
+					<% else %>
+						<th class="col-xs-7">Order Name</th>
+						<th class="col-xs-4">Date</th>
+						<th class="col-xs-1"></th>
+					<% end %>
+				</tr>
+			</thead>
+			
+			<! capture the order number of each downloaded non-inventory order ->
+			<% these_orders = Array.new %>
+			<% @orders.each do |o| %>
+				<% if !is_inventory(o) %>
+					<% if !o.get_downloaded.blank?() %>
+						<% these_orders << o.id %>
+					<% end %>
+				<% end %>
+			<% end %>
+			
+			<% @orders.each do |o| %>
+				<% if !is_inventory(o) || display_inventory(o) %>
+					<% user = o.get_customer %>
+					<tr class="thistable">
+						<% if current_user.admin %>
+						<!  note:   showusers is 'yes' to display additional columns, such as the user and cuisine, since this file is rendered by multiple sources ->
+							<% if showusers == 'yes' %>
+								<td><%= link_to user.name, user %></td>
+								<% cuisine = get_inventory(o.cuisine) %>
+								<% if cuisine.nil? %>
+									<td><b><%= "#{o.cuisine}" %> empty</b></td>
+								<% else %>
+									<td><%= link_to o.cuisine, edit_order_path(cuisine) %></td>
+								<% end %>
+							<% end %>
+							<td align='right'>
+								<div style="padding-right: 10px;">
+									<%= link_to o.id.to_s, pick_order_path(o) %>
+								</div>
+							</td>
+						<% end %>
+						<td><%= link_to o.name, pick_order_path(o) %></td>
+						<td>
+							<%= link_to small_time_string(o.created_at), pick_order_path(o) %>
+						</td>
+						<% if !(history == 'yes') %>
+							<td>
+								<% if o.get_downloaded.blank?() %>
+									<% if !is_inventory(o) %>
+										<%= link_to "Cancel order", orders_cancel_path(o), data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-primary" %>
+									<% end %>
+								<% else %>
+									<% if current_user.admin %>
+										<% if !is_inventory(o) %>
+											<%= link_to small_time_string(o.downloaded), pick_order_path(o) %>
+										<% end %>
+									<% end %>
+								<% end %>
+							</td>
+						<% end %>
+					</tr>
+				<% end %>
+			<% end %>
+		</table>
+	</div>
+</div>

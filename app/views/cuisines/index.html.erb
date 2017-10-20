@@ -1,0 +1,47 @@
+<% provide(:title, 'All Cuisine template names') %>
+<h2><b>Cuisine templates</b></h2>
+
+<div class="row">
+	<div class="container">
+		<table class="table table-condensed table-striped table-bordered">
+			<caption>Number of templates <%= "(#{@cuisines.count})" %></caption>
+			<thead>
+				<tr class="thistable">
+					<th class="col-xs-5">Name</th>
+					<th class="col-xs-1">Customers</th>
+					<th class="col-xs-1">History</th>
+					<th class="col-xs-5">Manage</th>
+				</tr>
+			</thead>
+			
+			
+			<% @cuisines.each do |c| %>
+					<% template = get_inventory(c.name) %>
+					<tr class="thistable">
+					
+						<% if template.nil? %>
+							<td><b><%= c.name %></b> empty</td>
+						<% else %>
+							<td><%= link_to c.name, edit_order_path(get_inventory(c.name)) %></td>
+						<% end %>
+						
+						<td align='right'>
+						  <div style="padding-right: 20px;">
+								<%= link_to c.get_customer_count(c.name), users_path(:cuisine => c.name) %>
+							<div>
+						</td>
+						
+						<td>
+							<%= link_to "History", inventory_history_path(:template => c.name) %>
+						</td>
+						
+						<% if template.nil? %>
+							<td><b><%= link_to "Create #{c.name}", inventory_path(:name => c.name) %></b></td>
+						<% else %>
+							<td><%= link_to "Update #{c.name}", inventory_path(:name => c.name) %></td>
+						<% end %>
+					</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

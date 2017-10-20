@@ -1,0 +1,30 @@
+<div class="container">
+	<table class="table table-condensed table-striped table-bordered">
+		<caption>Products: <%= "(#{@order.lineitems.size})" %></caption>
+		<thead>
+			<tr class="thistable">
+				<% if current_user.admin? %>
+					<th class="col-xs-1">Prod ID</th>
+				<% end %>
+				<th class="col-xs-1">Quantity</th>
+				<th class="col-xs-1">Units</th>
+				<% if current_user.admin? %>
+					<th class="col-xs-9">Product Description</th>
+				<% else %>
+					<th class="col-xs-10">Product Description</th>
+				<% end %>
+			</tr>
+		</thead>
+		
+		<% @lineitems.each do |l| %>
+				<tr class="thistable">
+					<% if current_user.admin? %>
+						<td><%= l.get_productid %></td>
+					<% end %>
+					<td><%= l.quantity %></td>
+					<td><%= l.plural %></td>
+					<td><%= l.get_name %></td>
+				</tr>
+		<% end %>
+	</table>
+</div>

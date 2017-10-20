@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  productid: 1
+  name: "Roma tomato"
+  um: pound
+  qum: case
+  qpu: 24
+  created_at: <%= Time.zone.now %> 
+
+two:
+  productid: 2
+  name: "Fuji apple"
+  um: pound
+  qum: case
+  qpu: 20
+  created_at: <%= Time.zone.now %> 
+
+three:
+  productid: 3
+  name: "Hass avocado"
+  um: each
+  qum: case
+  qpu: 24
+  created_at: <%= Time.zone.now %> 
+
+four:
+  productid: 4
+  name: "Thai basil"
+  um: pound
+  qum: case
+  qpu: 40
+  created_at: <%= Time.zone.now %> 
+
+five:
+  productid: 5
+  name: "Red onion"
+  um: pound
+  qum: case
+  qpu: 24
+  created_at: <%= Time.zone.now %> 
+
+six:
+  productid: 6
+  name: "Asparagus"
+  um: pound
+  qum: case
+  qpu: 40
+  created_at: <%= Time.zone.now %> 
+
+seven:
+  productid: 7
+  name: "Purple cabbage"
+  um: pound
+  qum: case
+  qpu: 24
+  created_at: <%= Time.zone.now %> 

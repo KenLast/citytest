@@ -1,0 +1,82 @@
+<% provide(:title, 'Administrator') %>
+<% provide(:showusers, 'yes') %>
+
+<style>
+hr { 
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+} 
+</style>
+
+<h2><b>Administrative Functions</b></h2>
+
+<div class="row">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-xs-2"><b>Customers</b></div>
+			<div class="col-xs-2"><%= link_to "List", users_path %></div>
+			<div class="col-xs-2"><%= link_to "Add new", signup_path %></div>
+		</div>
+		<hr>
+		<div class="row" style="background-color:GhostWhite;">
+			<div class="col-xs-2"><b>Orders</b></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2">All</div>
+			<div class="col-xs-2"><%= link_to "List", orders_path(:time => "all") %></div>
+			<div class="col-xs-2"><%= link_to "Download", admin_download_path(:time => "all"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Reset download", admin_download_reset_path(:time => "all"), 'data-turbolinks' => false %></div>
+		</div>
+		<div class="row" style="background-color:GhostWhite;">
+			<div class="col-xs-2">Today</div>
+			<div class="col-xs-2"><%= link_to "List", orders_path(:time => "today") %></div>
+			<div class="col-xs-2"><%= link_to "Download", admin_download_path(:time => "today"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Reset download", admin_download_reset_path(:time => "today"), 'data-turbolinks' => false %></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2">Yesterday</div>
+			<div class="col-xs-2"><%= link_to "List", orders_path(:time => "yesterday") %></div>
+			<div class="col-xs-2"><%= link_to "Download", admin_download_path(:time => "yesterday"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Reset download", admin_download_reset_path(:time => "yesterday"), 'data-turbolinks' => false %></div>
+		</div>
+		<div class="row" style="background-color:LemonChiffon;">
+			<div class="col-xs-2">Since yesterday</div>
+			<div class="col-xs-2"><%= link_to "List", orders_path(:time => "since yesterday") %></div>
+			<div class="col-xs-2"><%= link_to "Download", admin_download_path(:time => "since yesterday"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Reset download", admin_download_reset_path(:time => "since yesterday"), 'data-turbolinks' => false %></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2">This week</div>
+			<div class="col-xs-2"><%= link_to "List", orders_path(:time => "this week") %></div>
+			<div class="col-xs-2"><%= link_to "Download", admin_download_path(:time => "this week"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Reset download", admin_download_reset_path(:time => "this week"), 'data-turbolinks' => false %></div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-2"><b>Inventory</b></div>
+			<div class="col-xs-2"><%= link_to "List", cuisines_path %></div>
+			<div class="col-xs-2"><%= link_to "Upload", inventory_path %></div>
+			<div class="col-xs-2"><%= link_to "Show one", inventory_show_path %></div>
+			<div class="col-xs-2"><%= link_to "Create new type", new_cuisine_path %></div>
+		</div>
+		<hr>
+		<hr>
+		<div class="row">
+			<div class="col-xs-2"><b>Purge orders</b> older than</div>
+			<div class="col-xs-2"><%= link_to "one year", orders_purge_path(:time => "older than one year"), data: {confirm: "Are you sure?"} %></div>
+			<div class="col-xs-2"><%= link_to "two years", orders_purge_path(:time => "older than two years"), data: {confirm: "Are you sure?"} %></div>
+			<div class="col-xs-2"><%= link_to "three years", orders_purge_path(:time => "older than three years"), data: {confirm: "Are you sure?"} %></div>	
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-2"><b>Purge customers</b></div>
+			<div class="col-xs-2"><%= link_to "View and purge", users_purge_path %></div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+<style type="text/css">
+textarea {
+ font-size: 1em;
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ border: 1px solid black;
+}
+
+
+</style>
+
+<br>
+<div class="container">
+<%= form_for(@order, url: yield(:use_path), method: yield(:usemethod), html: { class: "form-inline" }) do |f| %>
+	Name for order:
+	<%= f.text_field :name, placeholder: yield(:nametext) %>
+	<br>
+	
+	<table>
+	<caption>Products</caption>
+		<div class="row">
+			<div class="col-xs-12">
+
+				<th>Quantity</th>
+				<th>Units</th>
+				<th>Product Description</th>
+	
+	
+				<%= f.fields_for :products do |p| %>
+					<div class="form-group">
+						<%= p.hidden_field :productid %>
+						<%= p.hidden_field :name %>
+						<%= p.hidden_field :qum %>
+						<%= p.hidden_field :qpu %>
+						<%= p.hidden_field :um %>
+						<tr>
+							<td><%= p.number_field :quantity, min: 0, step: 1 %></td>
+							<td>
+								<% if p.object.um == p.object.qum %>
+									<%= p.collection_select :selum, [p.object.um], :to_s, :to_s %>
+								<% else %>
+									<%= p.collection_select :selum, [p.object.um, p.object.qum], :to_s, :to_s %>
+								<% end %>
+							</td>
+							<td><%= p.text_field :name, disabled: true %></td>
+						</tr>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</table>
+	
+	<! add place for notes and title ->
+		Notes:
+		<%= f.text_area :note, placeholder: yield(:ordertext), size: "24x12" %>
+
+	<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
+</div>

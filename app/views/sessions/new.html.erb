@@ -1,0 +1,25 @@
+<% provide(:title, "Log in") %>
+<h2><b>Log in to your account</b></h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :customerid, 'Customer ID' %>
+      <%= f.text_field :customerid, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= link_to "(forgot password)", new_password_reset_path %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+<!-- KDA ... change below to send Mark and email requesting an account -->
+    <p>No account? <%= link_to "Contact City Produce", '/help' %> to get an account.</p>
+  </div>
+</div>

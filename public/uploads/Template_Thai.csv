@@ -1,0 +1,6 @@
+ProdID,Discontinued,ProductID,ProductName,SupplierID,SupplierID2,CategoryID,UM,QuantityPerUnit,QUM,ChargeConvertInd,ReorderLevel,ReorderInd,ReOrderDate,Qty_OnHand,Qty_Commit,Qty_OnOrder,Transport_Time,TaxableItem,EffBegDte,EffEndDte,UPC,PPic,uc,uc_date,updated,created,Notes
+52,FALSE,10120,Thai Chili Pepper,HAUHAU,FSI,P,LB,LB,1,,0,P,11/3/2016,-21600,-621,,0,0,1/1/1990,,,,$2.40 ,3/9/2016,1/27/2015,11/23/1999,
+421,FALSE,50110,Basil - Thai ( Bags ),HARVES,HUAPRO,H,LB,CS,15,,0,P,11/1/2016,31148,1689,3030,0,0,1/1/1990,,,,,12/11/2003,7/19/2016,11/24/1999
+606,FALSE,10205,Thai Eggplant,FSI,HAUHAU,AV,LB,LB,1,,0,P,11/4/2016,-10157,-570,13974,0,0,1/1/1990,,,,$1.20 ,6/14/2012,4/15/2011,1/13/2000
+897,FALSE,50109,Basil - Thai (loose),HARVES,HUAPRO,H,LB,CS,15,,0,P,11/1/2016,28272,-3890,2880669,0,0,1/1/1990,,,,$1.93 ,12/13/2003,5/17/2012,7/3/2003
+1240,FALSE,40232,Banana Thai,HAUHAU,,P,LB,LB,1,,0,P,6/24/2016,18,0,-18,0,0,1/1/1990,,,,$0.00 ,,2/10/2016,2/10/2016

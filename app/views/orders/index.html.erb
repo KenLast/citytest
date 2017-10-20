@@ -1,0 +1,10 @@
+<% provide(:title, 'All Orders') %>
+<% provide(:showusers, 'yes') %>
+
+<h2><b><%= "#{@time}" %>orders</b></h2>
+
+<div class="container">
+	<ul class="orders">
+		<%= render 'all_orders' %>
+	</ul>
+</div>

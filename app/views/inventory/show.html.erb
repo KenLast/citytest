@@ -1,0 +1,33 @@
+<% provide(:title, 'View Inventory') %>
+<% provide(:use_path, inventory_show_path) %>
+
+<h2><b>View cuisine template</b></h2>
+
+<div class="container">
+	<%= form_tag(multipart: true) do %>
+		<div class="caption">
+				View template of available products
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-1">
+				<%= label_tag 'Template' %>
+			</div>
+			<div class="col-xs-3">
+				<%= collection_select :template, :cuisine, Cuisine.all, :name, :name, :include_blank => false %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<%= submit_tag ("View") %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<!  for some reason, need exactly 4 line breaks to make footer work correctly ->
+
+<br>
+<br>
+<br>
+<br>

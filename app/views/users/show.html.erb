@@ -1,0 +1,51 @@
+<% provide(:title, @user.name) %>
+<% provide(:showusers, 'no') %>
+
+<div class="row">
+	<div class="col-xs-12">
+		<section class="user_info">
+			<%= gravatar_for @user %>
+			<b><%= @user.name %></b>
+			<br>Customer ID: <b><%= @user.customerid %></b>
+			<% if current_user.admin %>
+				<br>Cuisine: <b><%= @user.cuisine %></b>
+			<% end %>
+			<br>
+		</section>
+
+		<br>
+		<div class="link_buttons">
+			<div class="row">
+				<% if current_user.admin %>
+					<div class="col-xs-4"> 
+						<%= link_to "Place new order", new_order_path(owner: @user), class: "btn btn-md btn-primary" %>
+					</div>
+					<div class="col-xs-4">
+						<%= link_to "Edit #{@user.customerid}", edit_user_path(@user), class: "btn btn-md btn-primary" %>
+					</div>
+					<div class="col-xs-4">
+						<%= link_to "Add new customer", signup_path, class: "btn btn-md btn-primary" %>
+					</div>
+				<% else %>
+					<div class="col-xs-4">
+					</div>
+					<div class="col-xs-4"> 
+						<%= link_to "Place new order", new_order_path(owner: @user), class: "btn btn-md btn-primary" %>
+					</div>
+					<div class="col-xs-4">
+						<% @order = get_last_order(@user) %>
+						<% if !@order.nil? %>
+							<%= link_to "Exact last re-order", order_path(@order, owner: @user), method: "patch", class: "btn btn-md btn-primary" %>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+
+		<% if @user.orders.any? %>
+			<ol class="orders">
+				<%= render '/orders/all_orders' %>
+			</ol>
+		<% end %>
+  </div>
+</div>

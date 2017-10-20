@@ -1,0 +1,26 @@
+<li id="user-<%= user.id %>">
+  <%= gravatar_for user, size: 50 %>
+  <%= link_to user.name, user %>
+	  | Customer ID: <%= user.customerid %>
+		| <b><%= user.cuisine %></b>
+	<% if user.admin? %>   <!-- KDA add * to indicate administrator -->
+	  |	*admin 
+	<% end %>
+	<% if user.activated? %>
+		| active
+	<% else %>
+	  | inactive
+	<% end %>
+	<% if current_user.admin? %>
+		| <%= link_to "edit", edit_user_path(user) %>
+	<% end %>
+	<% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+	<% if user.orders.any? %>
+		| <%= link_to user.orders.first.created_at.to_formatted_s(:long_ordinal), edit_order_path(user.orders.first) %>
+	<% else %>
+		| No orders
+	<% end %>
+</li>

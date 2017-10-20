@@ -1,0 +1,73 @@
+<% provide(:title, 'Administrator') %>
+<% provide(:showusers, 'yes') %>
+
+<style>
+hr { 
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+} 
+</style>
+
+<h2><b>Administrative Functions</b></h2>
+
+<div class="row">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-xs-2"><%= link_to "List all Customers", users_path %></div>
+			<div class="col-xs-2"><%= link_to "Add new Customer", signup_path %></div>
+		</div><br>
+		<div class="row">
+			<div class="col-xs-2"><%= link_to "All Orders", orders_path %></div>
+			<div class="col-xs-2"><%= link_to "Today's Orders", orders_path(:time => "today") %></div>
+			<div class="col-xs-2"><%= link_to "Yesterday's Orders", orders_path(:time => "yesterday") %></div>
+			<div class="col-xs-2"><%= link_to "Orders since yesterday", orders_path(:time => "since yesterday") %></div>
+			<div class="col-xs-2"><%= link_to "This week's Orders", orders_path(:time => "this week") %></div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-12"><%= link_to "Upload one Inventory Template", inventory_path %></div>
+		</div><br>
+		<div class="row">
+			<div class="col-xs-12"><%= link_to "Show one Inventory Template", inventory_show_path %></div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-12"><%= link_to "List all Cuisines", cuisines_path %></div>
+		</div><br>
+		<div class="row">
+			<div class="col-xs-12"><%= link_to "Add new Cuisine type", new_cuisine_path %></div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-12"><b>Download orders as text file</b></div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-2"><%= link_to "All Orders", admin_download_path, 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Today's Orders", admin_download_path(:time => "today"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Yesterday's Orders", admin_download_path(:time => "yesterday"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Orders since yesterday", admin_download_path(:time => "since yesterday"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "This week's Orders", admin_download_path(:time => "this week"), 'data-turbolinks' => false %></div>
+		</div>
+
+		<hr>
+		<div class="row">
+			<div class="col-xs-12"><b>Reset download indicator</b></div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-2"><%= link_to "All Orders", admin_download_reset_path, 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Today's Orders", admin_download_reset_path(:time => "today"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Yesterday's Orders", admin_download_reset_path(:time => "yesterday"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "Orders since yesterday", admin_download_reset_path(:time => "since yesterday"), 'data-turbolinks' => false %></div>
+			<div class="col-xs-2"><%= link_to "This week's Orders", admin_download_reset_path(:time => "this week"), 'data-turbolinks' => false %></div>
+		</div>
+	
+	</div>
+</div>

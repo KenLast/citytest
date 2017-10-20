@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+orange:
+  note: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 10.minutes.ago %>
+  name: "named order orange"
+  user: hawk
+
+tau_manifesto:
+  note: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 3.years.ago %>
+  name: "order for manifesto"
+  user: hawk
+
+cat_video:
+  note: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 2.hours.ago %>
+  name: "named order sad cats"
+  user: hawk
+
+most_recent:
+  note: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= Time.zone.now %>
+  name: "named order short test"
+  user: hawk
+
+<% 30.times do |n| %>
+order_<%= n %>:
+  note: <%= Faker::Lorem.sentence(5) %>
+  name: <%= "some name#{n}" %>
+  created_at: <%= 42.days.ago %>
+  user: hawk
+<% end %>

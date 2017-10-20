@@ -1,0 +1,25 @@
+<div class="container">
+	<table class="table table-condensed table-striped table-bordered">
+		<caption>Products: <%= "(#{@order.lineitems.size})" %></caption>
+		<thead>
+			<tr class="thistable">
+				<th class="col-xs-1">Product ID</th>
+				<th class="col-xs-8">Product Description</th>
+				<th class="col-xs-1">Unit</th>
+				<th class="col-cs-1">Unit/Q</th>
+				<th class="col-xs-1">Q.Unit</th>
+			</tr>
+		</thead>
+		
+		<% @lineitems.each do |l| %>
+				<% product = l.get_product %>
+				<tr class="thistable">
+					<td><%= product.productid %></td>
+					<td><%= product.name %></td>
+					<td><%= product.um %></td>
+					<td><%= product.qpu %></td>
+					<td><%= product.qum %></td>
+				</tr>
+		<% end %>
+	</table>
+</div>
